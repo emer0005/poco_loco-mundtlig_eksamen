@@ -1,0 +1,59 @@
+---
+const { title, text, price, link } = Astro.props;
+---
+
+<article>
+  <h2>{title}</h2>
+  <p>{text}</p>
+  <p class="price">{price}</p>
+  <a href={link}>ORDER HERE</a>
+</article>
+
+<style>
+  article {
+    background-color: #91687e;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+    margin-bottom: 4rem;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.7rem;
+    color: #fff1e0;
+  }
+
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    line-height: 2;
+    color: #fffaf4;
+  }
+
+  .price {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #fff1e0;
+    margin-top: auto;
+  }
+
+  a {
+    background-color: #4d1432;
+    color: #faf2e8;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.5rem 2rem;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    margin-top: auto;
+    width: fit-content;
+  }
+
+  a:hover {
+    background-color: #783e5c;
+  }
+</style>

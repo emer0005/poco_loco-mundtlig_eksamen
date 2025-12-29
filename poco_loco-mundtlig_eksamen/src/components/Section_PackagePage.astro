@@ -1,0 +1,66 @@
+<section>
+  <img src="/tacotogo.webp" alt="" />
+  <div class="text_box">
+    <h2>How It Works</h2>
+    <ol>
+      <li>Order your bundle</li>
+      <li>Pick it up at our place</li>
+      <li>Cook it at home with the simple guide</li>
+    </ol>
+  </div>
+</section>
+
+<style>
+  section {
+    background-color: #600534;
+    margin-bottom: 6rem;
+  }
+  ol {
+    margin-left: 3rem;
+  }
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  h2 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    color: #fff1e0;
+  }
+
+  li {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 1rem;
+    color: #fffaf4;
+    font-weight: 200;
+  }
+
+  .text_box {
+    padding: 2rem 2rem;
+  }
+
+  @media (min-width: 1000px) {
+    section {
+      max-height: 590px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      place-items: center start;
+    }
+
+    img {
+      max-height: 590px;
+      object-fit: cover;
+    }
+
+    .text_box. {
+      padding-right: 0;
+    }
+
+    li {
+      margin-left: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+</style>

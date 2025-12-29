@@ -1,0 +1,78 @@
+<section class="grid">
+  <div class="text_content">
+    <h2>Poco Loco</h2>
+    <p>At Poco Loco we bring the warmth of Mexico to Vesterbro. Our dishes are made with fresh ingredients and are true to traditional home cooking that goes several generations back. So come by and bring your amor, amigos or the whole familia, and get a taste of Mexico - just like we love it.</p>
+    <a href="https://restaurant-poco-loco.superbexperience.com/">BOOK TABLE</a>
+  </div>
+  <img src="/pocoloco.webp" alt="Billede fra restauranten" />
+</section>
+
+<style>
+  .grid {
+    background-color: #91687e;
+    margin-bottom: 6rem;
+  }
+  .text_content {
+    padding: 4rem 1.5rem;
+  }
+
+  h2 {
+    font-size: clamp(4rem, 4vw, 6.5rem);
+    margin-bottom: 1.2rem;
+    color: #3c1127;
+  }
+
+  p {
+    font-size: clamp(1.6rem, 3vw, 1.8rem);
+    line-height: 2;
+    padding-bottom: 1.5rem;
+    color: #3c1127;
+    margin-bottom: 2rem;
+  }
+
+  img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+
+  a {
+    background-color: #4d1432;
+    color: #f7ecde;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.7rem 3rem;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  a:hover {
+    background-color: #783e5c;
+  }
+
+  /**************** Desktop **************/
+  @media (min-width: 1200px) {
+    .grid {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-areas:
+        "image"
+        "text";
+    }
+
+    .text_content {
+      justify-self: center;
+      align-self: center;
+      min-width: 500px;
+      padding: 0 3rem;
+    }
+
+    img {
+      width: 750px;
+      height: 800px;
+      object-fit: cover;
+      grid-area: image;
+    }
+  }
+</style>

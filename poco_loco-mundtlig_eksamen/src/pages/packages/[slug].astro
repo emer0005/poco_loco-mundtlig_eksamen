@@ -1,0 +1,56 @@
+---
+import SectionForm from "../../components/SectionForm.astro";
+import "../../styles/style.css";
+
+import type { GetStaticPaths } from "astro";
+export async function getStaticPaths() {
+  const url = "https://mmrncfqaulcikmsvcajc.supabase.co/rest/v1/Packages";
+  const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1tcm5jZnFhdWxjaWttc3ZjYWpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ5MDk4NDksImV4cCI6MjA4MDQ4NTg0OX0.lCiHp8286uEb--d6v6H8AW5GG-NjQHHyJ3JfktN1F5s";
+
+  const options = {
+    headers: {
+      apikey: key,
+    },
+  };
+
+  const packagesRequest = await fetch(url, options);
+  const packageData = await packagesRequest.json();
+
+  return packageData.map((packages) => {
+    return {
+      params: { slug: packages.slug },
+      props: { packages },
+    };
+  });
+}
+
+const { packages } = Astro.props;
+console.log("packages: ");
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+    <link rel="icon" href="/logo1.svg" type="image/svg+xml" />
+    <link rel="icon" href="/logo1.png" type="image/png" />
+    <meta name="”robots”" content="”noindex,nofollow”" />
+    <title>{packages.Name}</title>
+  </head>
+  <body>
+    <div class="arrow">
+      <a href="/taco_kits.html"><img src="/Arrow.svg" alt="Tilbage pil" /></a>
+    </div>
+    <div class="form_section">
+      <h1>{packages.Name}</h1>
+      <p>{packages.Short_description}</p>
+      <img src={packages.Images} alt="Billeder af pakke" />
+    </div>
+    <SectionForm data={packages} />
+  </body>
+</html>

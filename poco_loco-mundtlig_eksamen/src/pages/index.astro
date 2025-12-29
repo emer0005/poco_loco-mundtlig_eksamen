@@ -1,0 +1,26 @@
+---
+import Banner from "../components/Banner.astro";
+import CardSection from "../components/CardSection.astro";
+import Carrousel from "../components/Carrousel.astro";
+import Section_one from "../components/Section_one.astro";
+import Section_two from "../components/Section_two.astro";
+import HeroSection from "../components/HeroSection.astro";
+import PageLayout from "../layouts/Pagelayout.astro";
+import "../styles/style.css";
+---
+
+<PageLayout title="Poco Loco">
+  <HeroSection />
+  <div class="index_section">
+    <h1>Authentic Mexican Food</h1>
+    <p>Experience authentic Mexican flavors - freshly prepared and inspired by the traditions, culture, and ingredients from the heart of Mexico.</p>
+    <div class="button">
+      <a href="https://mexicanfood.dk/wp-content/uploads/2025/08/Menu_Poco_Loco_August_2025.pdf">VIEW MENU</a>
+    </div>
+  </div>
+  <CardSection />
+  <Section_two />
+  <Banner />
+  <Section_one />
+  <Carrousel />
+</PageLayout>

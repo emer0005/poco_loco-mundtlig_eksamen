@@ -1,0 +1,246 @@
+---
+const { logo, variant } = Astro.props;
+---
+
+<!--Kilde: Arbejdet ud fra en menu som er givet i undervisningen på 1. semester -->
+<header class={variant}>
+  <div class="logo">
+    <a href="/">
+      <img src={logo} alt="Logo" />
+    </a>
+  </div>
+
+  <div class="right_bar">
+    <a href="https://restaurant-poco-loco.superbathome.com/menu/pocoloco">TAKEAWAY</a>
+    <a href="https://restaurant-poco-loco.superbexperience.com/">BOOK TABLE</a>
+  </div>
+
+  <nav>
+    <div class="burger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+
+    <ul class="menu">
+      <li><a href="https://mexicanfood.dk/wp-content/uploads/2025/08/Menu_Poco_Loco_August_2025.pdf">MENU</a></li>
+      <li><a href="taco_kits.html">TACO TOGO</a></li>
+      <li><a href="index.html">ABOUT US</a></li>
+      <li class="mobile_menu"><a href="https://restaurant-poco-loco.superbexperience.com/">BOOK TABLE</a></li>
+      <li class="mobile_menu"><a href="https://restaurant-poco-loco.superbathome.com/menu/pocoloco">TAKEAWAY</a></li>
+    </ul>
+  </nav>
+</header>
+
+<script is:inline>
+  const burger = document.querySelector(".burger");
+  const nav = document.querySelector("nav");
+  const menu = document.querySelector(".menu");
+
+  burger.addEventListener("click", burgerClick);
+  function burgerClick() {
+    burger.classList.toggle("active");
+    nav.classList.toggle("active");
+  }
+  menu.addEventListener("click", menuClick);
+  function menuClick() {
+    burger.classList.remove("active");
+    nav.classList.remove("active");
+  }
+</script>
+
+<style>
+  header {
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .logo img {
+    width: 150px;
+    height: 150px;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    order: -1;
+  }
+
+  .menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 2rem;
+  }
+
+  .menu li {
+    margin-right: 50px;
+  }
+
+  .menu li:last-child {
+    margin-right: 0;
+  }
+
+  .menu a {
+    display: block;
+    padding: 10px;
+    color: #faf2e8;
+    text-decoration: none;
+    transition: color 0.3s;
+    text-align: end;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .menu a:hover {
+    text-decoration: underline;
+  }
+
+  .burger {
+    width: 60px;
+    height: 40px;
+    cursor: pointer;
+    margin-right: 2rem;
+  }
+
+  .burger .line {
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    margin-bottom: 10px;
+    transition: 0.2s linear;
+  }
+  .burger {
+    display: none;
+  }
+
+  .right_bar a {
+    background-color: #ea590e;
+    color: #faf2e8;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-right: 2rem;
+    text-decoration: none;
+    padding: 0.8rem 3rem;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .right_bar a:hover {
+    background-color: #9a3512;
+  }
+
+  .mobile_menu {
+    display: none;
+  }
+  /*********** Variant *************/
+
+  .menu_variant {
+    position: sticky;
+    background-color: #eed3b1;
+    padding: 0;
+    padding-top: 5px;
+  }
+
+  .menu_variant .logo img {
+    width: 100px;
+    height: 100px;
+    margin-left: 1rem;
+  }
+
+  .menu_variant .menu a {
+    color: #ac591b;
+  }
+
+  .menu_variant .burger .line {
+    background-color: #ac591b;
+  }
+
+  .menu_variant .right_bar a {
+    background-color: #d17735;
+    color: #faf2e8;
+    font-size: 1rem;
+  }
+
+  /***********  Mobile ***************/
+
+  @media screen and (max-width: 1300px) {
+    header {
+      justify-content: space-between;
+    }
+    nav {
+      order: 0;
+    }
+
+    .logo {
+      margin-right: auto;
+    }
+
+    .menu {
+      display: none;
+    }
+    .burger {
+      display: block;
+      z-index: 200;
+    }
+
+    .right_bar {
+      display: none;
+    }
+
+    .mobile_menu {
+      display: block;
+    }
+
+    .burger.active .line,
+    .menu_variant .burger.active .line {
+      background-color: #e8d1b4;
+    }
+
+    .burger.active .line:nth-child(1) {
+      transform: rotate(45deg) translate(10px, 10px);
+      transition: 0.2s linear;
+    }
+
+    .burger.active .line:nth-child(2) {
+      opacity: 0;
+      transition: 0.15s linear;
+    }
+
+    .burger.active .line:nth-child(3) {
+      transform: rotate(-45deg) translate(10px, -10px);
+      transition: 0.2s linear;
+    }
+
+    nav.active .menu {
+      display: block;
+      background-color: #4d1432;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+      padding-top: 35rem;
+    }
+
+    nav.active .menu li {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #ccc;
+    }
+
+    nav.active .menu li:last-child {
+      border-bottom: none;
+      margin-right: 3.5rem;
+    }
+
+    nav.active .menu a {
+      font-size: 30px;
+      text-align: center;
+      color: #e8d1b4;
+    }
+  }
+</style>

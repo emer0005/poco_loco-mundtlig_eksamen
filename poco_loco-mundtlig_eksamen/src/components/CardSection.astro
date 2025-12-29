@@ -1,0 +1,47 @@
+---
+import Card from "./Card.astro";
+---
+
+<!-- Kilde: https://youtube.com/shorts/W2yJ_IbkAyI?si=1umdcZbPE25n6Zpc -->
+<section>
+  <div class="carrousel">
+    <Card class="card" image="/taco.webp" title="Tacos" text="Carnitas | Chicken Chipotle | Veggie | Birria | Steak" price_single="Single: DKK 45" price_multi="3 tacos:  DKK 115" />
+    <Card class="card" image="/bowl.webp" title="Bowls" text="Carnitas | Chicken Chipotle | Birria | Veggie" price_single="Single: DKK 98" />
+    <Card class="card" image="/burrito.webp" title="Burritos" text="Carnitas | Chicken Chipotle | Birria | Veggie" price_single="Single: DKK 98" />
+  </div>
+</section>
+
+<style>
+  .section {
+    width: 100%;
+  }
+
+  .carrousel {
+    padding: 0 1rem;
+    display: grid;
+    grid-auto-flow: column;
+    scroll-behavior: auto;
+    gap: 1rem;
+    overflow-y: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    margin-bottom: 8rem;
+  }
+
+  .carrousel::-webkit-scrollbar {
+    display: none;
+  }
+  .card {
+    scroll-snap-align: start;
+  }
+
+  @media (min-width: 1200px) {
+    .carrousel {
+      padding: 0 2rem;
+      max-width: 1800px;
+      margin: 0 auto;
+      margin-bottom: 12rem;
+    }
+  }
+</style>

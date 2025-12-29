@@ -1,0 +1,145 @@
+---
+import FormContent from "./FormContent.astro";
+import FormPackage from "./FormPackage.astro";
+import FormInformation from "./FormInformation.astro";
+const { data } = Astro.props;
+---
+
+<section>
+  <div class="content">
+    <FormContent tacos={data.Tacos} chicken={data.Chicken} pork={data.Pork} birria={data.Birria} salsa={data.Salsas} />
+  </div>
+  <div class="grid_1-1">
+    <div class="information">
+      <FormInformation />
+    </div>
+    <div class="package">
+      <FormPackage />
+    </div>
+    <div class="text_box">
+      <p>Contact us for any dietary restrictions or special requests</p>
+      <input type="text" class="textbox" />
+      <p class="priceline">
+        <span class="total">Total</span>
+        <span class="price">{data.Price} ,-</span>
+        <span class="taxes"> Taxes included</span>
+      </p>
+      <hr />
+    </div>
+
+    <form class="terms">
+      <input type="checkbox" id="terms" name="terms" value="terms" />
+      <label for="terms"> I agree to the restaurants terms and conditions *</label><br />
+    </form>
+
+    <div class="button">
+      <a href="">SUBMIT ORDER</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .content,
+  .information,
+  .package {
+    margin-bottom: 4rem;
+  }
+
+  section {
+    margin-bottom: 4rem;
+  }
+  .text_box input {
+    display: block;
+    width: 100%;
+    margin-bottom: 2.5rem;
+    border-radius: 40px;
+    box-sizing: border-box;
+    font-size: 1.1rem;
+    padding-left: 1rem;
+    border: none;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 500px;
+    height: 200px;
+  }
+
+  .text_box {
+    margin: 0 2rem;
+  }
+
+  .text_box p {
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    color: #4d1432;
+    max-width: 500px;
+  }
+
+  .terms label {
+    font-size: 1rem;
+    color: #4d1432;
+  }
+
+  .terms input {
+    scale: 1.5;
+    margin-right: 0.5rem;
+    margin-left: 3rem;
+    margin-top: 4rem;
+  }
+
+  .total {
+    margin-right: 5rem;
+    font-size: 2rem;
+  }
+
+  .price {
+    font-size: 2rem;
+    margin-right: 1rem;
+    color: #4d1432;
+  }
+
+  hr {
+    max-width: 400px;
+  }
+
+  .button a {
+    display: block;
+    background-color: #ea590e;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    width: fit-content;
+  }
+
+  .button {
+    margin-top: 4rem;
+    margin-left: 2.8rem;
+    margin-bottom: 8rem;
+  }
+
+  .button a:hover {
+    background-color: #9a3512;
+  }
+
+  @media (min-width: 1050px) {
+    section {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .grid_1-1 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .terms {
+      grid-row: 3/4;
+    }
+
+    .button {
+      grid-row: 4/5;
+    }
+  }
+</style>

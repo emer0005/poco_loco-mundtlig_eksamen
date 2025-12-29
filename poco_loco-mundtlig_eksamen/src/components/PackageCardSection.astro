@@ -1,0 +1,53 @@
+---
+import PackageCard from "./PackageCard.astro";
+
+const { data } = Astro.props;
+---
+
+<section>
+  <h2>Find the package that fits you</h2>
+  <p>Pick your favorite and start your taco night</p>
+  <div class="grid_1-1-1">
+    <PackageCard title={data[0].Name} text="Our For The Couple pack is designed for two people who want to enjoy a cozy and flavorful taco night at home. With a selection of delicious tacos, fresh toppings, and vibrant salsas, everything is prepared and ready for you to heat, assemble, and enjoy together." price=`Price: ${data[0].Price},-` link=`/packages/${data[0].slug}.html` />
+    <PackageCard title={data[1].Name} text="Our For The Family pack is designed for four people who want to enjoy a fun and flavorful taco night at home. With a selection of delicious tacos, fresh toppings, and vibrant salsas, everything is prepared and ready for you to heat, assemble, and enjoy together." price=`Price: ${data[1].Price},-` link=`/packages/${data[1].slug}.html` />
+    <PackageCard title={data[2].Name} text="Our For The Party pack is designed for six people who want to enjoy a lively and flavorful taco night at home. With a generous selection of delicious tacos, fresh toppings, and vibrant salsas, everything is prepared and ready for you to heat, assemble, and enjoy together." price=`Price: ${data[2].Price},-` link=`/packages/${data[2].slug}.html` />
+  </div>
+</section>
+
+<style>
+  section {
+    padding: 0 3rem;
+    margin-bottom: 10rem;
+  }
+
+  h2 {
+    font-size: clamp(1.69rem, 5vw, 4rem);
+    text-align: start;
+    color: #53002c;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    text-align: start;
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    font-weight: lighter;
+    color: #53002c;
+    margin-bottom: 3rem;
+  }
+  @media (min-width: 1400px) {
+    .grid_1-1-1 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+
+      margin: 0 auto;
+      gap: 40px;
+      padding: 0 2rem;
+    }
+
+    h2,
+    p {
+      text-align: start;
+      padding: 0 2rem;
+    }
+  }
+</style>

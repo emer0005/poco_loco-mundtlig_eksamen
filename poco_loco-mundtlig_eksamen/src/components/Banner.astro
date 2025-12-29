@@ -1,0 +1,72 @@
+<!-- Kilde: Youtubevideo  -->
+<section>
+  <div class="banner">
+    <ul class="banner_content">
+      <li>POCO LOCO</li>
+      <li>POCO LOCO</li>
+      <li>POCO LOCO</li>
+      <li>POCO LOCO</li>
+    </ul>
+    <ul class="banner_content">
+      <li>POCO LOCO</li>
+      <li>POCO LOCO</li>
+      <li>POCO LOCO</li>
+      <li>POCO LOCO</li>
+    </ul>
+    <ul class="banner_content">
+      <li>POCO LOCO</li>
+      <li>POCO LOCO</li>
+      <li>POCO LOCO</li>
+      <li>POCO LOCO</li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  section {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 6rem;
+  }
+
+  .banner {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .banner_content {
+    display: flex;
+    flex-shrink: 0;
+    animation: scroll 20s linear infinite;
+  }
+
+  .banner_content li {
+    font-size: clamp(5rem, 8vw, 8rem);
+    color: #53002c;
+    margin-right: 100px;
+    list-style: none;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+  }
+
+  @keyframes scroll {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    section {
+      margin-top: 8rem;
+      margin-bottom: 8rem;
+    }
+  }
+</style>

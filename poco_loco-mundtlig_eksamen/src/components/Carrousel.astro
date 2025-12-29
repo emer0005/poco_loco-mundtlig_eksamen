@@ -1,0 +1,92 @@
+<!-- Kilde: https://youtube.com/shorts/W2yJ_IbkAyI?si=1umdcZbPE25n6Zpc -->
+<section>
+  <div class="text_content">
+    <h2>Poco Loco Moments</h2>
+    <a href="https://www.instagram.com/pocoloco_cph/?hl=da">
+      <p>
+        From our Instagram <svg width="50" height="10" viewBox="0 0 94 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M93.0144 8.66016L78.0144 -9.82285e-05V17.3204L93.0144 8.66016ZM0 8.66016V10.1602H79.5144V8.66016V7.16016H0V8.66016Z" fill="#3E1F13" fill-opacity="0.8"></path>
+        </svg>
+      </p></a
+    >
+  </div>
+
+  <div class="image_section">
+    <div class="carrousel">
+      <img src="/instagrampost1.webp" alt="Taco" />
+      <img src="/instagrampost2.webp" alt="Food" />
+      <img src="/instagrampost3.webp" alt="Food" />
+      <img src="/instagrampost4.webp" alt="Food" />
+      <img src="/instagrampost8.webp" alt="Drink" />
+      <img src="/instagrampost6.webp" alt="Taco" />
+      <img src="/instagrampost7.webp" alt="Restaurant" />
+      <img src="/instagrampost5.webp" alt="Food" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .image_section {
+    width: 100%;
+    margin-bottom: 10rem;
+  }
+
+  .carrousel {
+    padding: 0 1.5rem;
+    display: grid;
+    grid-auto-flow: column;
+    scroll-behavior: auto;
+    gap: 2rem;
+    overflow-y: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .carrousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  img {
+    scroll-snap-align: center;
+    width: 400px;
+    height: 500px;
+    object-fit: cover;
+  }
+
+  h2 {
+    font-size: clamp(2.8rem, 4vw, 5rem);
+    font-weight: 600;
+    color: #53002c;
+  }
+
+  p {
+    font-weight: lighter;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    margin-left: 0.4rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .text_content {
+    padding-left: 2rem;
+  }
+
+  svg {
+    margin-left: 0.5rem;
+  }
+
+  @media (min-width: 1200px) {
+    img {
+      height: 600px;
+    }
+  }
+</style>
