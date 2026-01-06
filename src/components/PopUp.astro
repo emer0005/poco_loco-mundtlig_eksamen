@@ -41,9 +41,13 @@ const { variant } = Astro.props;
   document.querySelector("section").classList.add(`popup-${variantType}`);
 
   if (variantType === "B") {
-    // Flyt popup ud af background, så den ikke er afhængig af overlay
-    background.parentNode.insertBefore(popup, background); // popup før background
-    background.remove(); // fjern baggrund, så den ikke blokkerer
+    if (window.innerWidth >= 800) {
+      // desktop
+      // Flyt popup ud af background, så den ikke er afhængig af overlay
+      background.parentNode.insertBefore(popup, background); // popup før background
+      background.remove(); // fjern baggrund, så den ikke blokkerer
+    }
+    // på mobil (window.innerWidth < 800) gør vi ingenting, så baggrund bliver stående
   }
 
   // --- Tjek om pop-up allerede er set ---
