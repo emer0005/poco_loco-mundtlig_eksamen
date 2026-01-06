@@ -33,10 +33,10 @@ const { variant } = Astro.props;
   const box = document.querySelector(".box");
 
   // --- Vælg A/B variant og gem ---
-  let variantType = localStorage.getItem("variantType");
+  let variantType = sessionStorage.getItem("variantType");
   if (!variantType) {
     variantType = Math.random() < 0.5 ? "A" : "B";
-    localStorage.setItem("variantType", variantType);
+    sessionStorage.setItem("variantType", variantType);
   }
   document.querySelector("section").classList.add(`popup-${variantType}`);
 
@@ -51,7 +51,7 @@ const { variant } = Astro.props;
   }
 
   // --- Tjek om pop-up allerede er set ---
-  let hasSeenPopup = localStorage.getItem("hasSeenPopup") === "true";
+  let hasSeenPopup = sessionStorage.getItem("hasSeenPopup") === "true";
 
   if (!hasSeenPopup) {
     // vis pop-up én gang
@@ -67,7 +67,7 @@ const { variant } = Astro.props;
     popup.classList.remove("active");
     background.classList.remove("active");
     box.classList.add("active");
-    localStorage.setItem("hasSeenPopup", "true");
+    sessionStorage.setItem("hasSeenPopup", "true");
   });
 
   box.addEventListener("click", () => {
