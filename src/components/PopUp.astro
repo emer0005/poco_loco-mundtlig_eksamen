@@ -1,0 +1,230 @@
+---
+const { variant } = Astro.props;
+---
+
+<section class="popup-section">
+  <div class="background">
+    <div class="popup">
+      <div class="close_button">
+        <img src="/close.svg" alt="close button" />
+      </div>
+      <img src="/tacotogo.webp" alt="Tacos" />
+      <div class="text_box">
+        <h1>Cook Your Taco at Home</h1>
+        <p>Pick up a kit with fresh ingredients and our authentic recipe - easy, fun, and ready to enjoy. Order online now</p>
+        <a href="taco_kits.html">Order here</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="box">
+  <div class="close_button_box">
+    <img src="/close.svg" alt="Close button" />
+  </div>
+  <h1>New Concept: Taco Togo</h1>
+</div>
+
+<script is:inline>
+  const popup = document.querySelector(".popup");
+  const background = document.querySelector(".background");
+  const closeBtn = document.querySelector(".close_button");
+  const closeBtn_box = document.querySelector(".close_button_box");
+  const box = document.querySelector(".box");
+
+  // --- Vælg A/B variant og gem ---
+  let variantType = localStorage.getItem("variantType");
+  if (!variantType) {
+    variantType = Math.random() < 0.5 ? "A" : "B";
+    localStorage.setItem("variantType", variantType);
+  }
+  document.querySelector("section").classList.add(`popup-${variantType}`);
+
+  // --- Tjek om pop-up allerede er set ---
+  let hasSeenPopup = localStorage.getItem("hasSeenPopup") === "true";
+
+  if (!hasSeenPopup) {
+    // vis pop-up én gang
+    setTimeout(() => {
+      popup.classList.add("active");
+      background.classList.add("active");
+    }, 50);
+  } else {
+    box.classList.add("active");
+  }
+
+  closeBtn.addEventListener("click", () => {
+    popup.classList.remove("active");
+    background.classList.remove("active");
+    box.classList.add("active");
+    localStorage.setItem("hasSeenPopup", "true");
+  });
+
+  box.addEventListener("click", () => {
+    popup.classList.add("active");
+    background.classList.add("active");
+    box.classList.remove("active");
+  });
+
+  closeBtn_box.addEventListener("click", (e) => {
+    e.stopPropagation();
+    box.classList.remove("active");
+  });
+</script>
+
+<style>
+  .popup {
+    display: none;
+    width: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 200;
+  }
+
+  .popup.active {
+    display: block;
+  }
+
+  .background {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 199;
+  }
+
+  .background.active {
+    display: block;
+  }
+
+  .text_box {
+    background-color: #f39c48;
+    padding: 1.4rem;
+    padding-bottom: 3rem;
+  }
+
+  h1 {
+    color: #4d1432;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  p {
+    color: #4d1432;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  a {
+    background-color: #4d1432;
+    color: #eaae65;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: 2rem;
+  }
+
+  a:hover {
+    background-color: #783e5c;
+  }
+
+  img {
+    object-fit: cover;
+    height: 100%;
+  }
+
+  .close_button {
+    position: absolute;
+    cursor: pointer;
+    top: -20px;
+    right: -20px;
+  }
+
+  .box {
+    display: none;
+    background-color: #f39c48;
+    position: fixed;
+    bottom: -20px;
+    width: 100%;
+    z-index: 200;
+    cursor: pointer;
+  }
+
+  .box.active {
+    display: block;
+  }
+
+  .close_button_box {
+    display: none;
+  }
+  .box h1 {
+    font-size: 1.4rem;
+    text-align: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  @media (min-width: 1000px) {
+    .popup-A .popup {
+      width: 800px;
+      height: 500px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .popup-A .popup.active {
+      display: grid;
+    }
+    .popup-A h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+    .popup-A p {
+      font-size: 1.5rem;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+
+    .popup-A a {
+      font-size: 1.2rem;
+    }
+    .popup-A .text_box {
+      padding-top: 2rem;
+    }
+  }
+
+  @media (min-width: 800px) {
+    .popup-B .popup {
+      top: auto;
+      left: auto;
+      transform: none;
+      bottom: 20px;
+      right: 50px;
+    }
+
+    .popup-B .background {
+      background: none;
+    }
+    .box {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      width: fit-content;
+      right: 40px;
+    }
+
+    .close_button_box {
+      display: inline;
+      position: absolute;
+      right: -20px;
+      top: -20px;
+    }
+  }
+</style>
