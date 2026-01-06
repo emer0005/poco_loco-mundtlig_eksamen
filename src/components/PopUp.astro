@@ -40,6 +40,12 @@ const { variant } = Astro.props;
   }
   document.querySelector("section").classList.add(`popup-${variantType}`);
 
+  if (variantType === "B") {
+    // Flyt popup ud af background, så den ikke er afhængig af overlay
+    background.parentNode.insertBefore(popup, background); // popup før background
+    background.remove(); // fjern baggrund, så den ikke blokkerer
+  }
+
   // --- Tjek om pop-up allerede er set ---
   let hasSeenPopup = localStorage.getItem("hasSeenPopup") === "true";
 
