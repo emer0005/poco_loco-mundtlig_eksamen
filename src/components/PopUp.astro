@@ -3,17 +3,16 @@ const { variant } = Astro.props;
 ---
 
 <section class="popup-section">
-  <div class="background">
-    <div class="popup">
-      <div class="close_button">
-        <img src="/close.svg" alt="close button" />
-      </div>
-      <img src="/tacotogo.webp" alt="Tacos" />
-      <div class="text_box">
-        <h1>Cook Your Taco at Home</h1>
-        <p>Pick up a kit with fresh ingredients and our authentic recipe - easy, fun, and ready to enjoy. Order online now</p>
-        <a href="taco_kits.html">Order here</a>
-      </div>
+  <div class="background"></div>
+  <div class="popup">
+    <div class="close_button">
+      <img src="/close.svg" alt="close button" />
+    </div>
+    <img src="/tacotogo.webp" alt="Tacos" />
+    <div class="text_box">
+      <h1>Cook Your Taco at Home</h1>
+      <p>Pick up a kit with fresh ingredients and our authentic recipe - easy, fun, and ready to enjoy. Order online now</p>
+      <a href="taco_kits.html">Order here</a>
     </div>
   </div>
 </section>
@@ -39,16 +38,6 @@ const { variant } = Astro.props;
     sessionStorage.setItem("variantType", variantType);
   }
   document.querySelector("section").classList.add(`popup-${variantType}`);
-
-  if (variantType === "B") {
-    if (window.innerWidth >= 800) {
-      // desktop
-      // Flyt popup ud af background, så den ikke er afhængig af overlay
-      background.parentNode.insertBefore(popup, background); // popup før background
-      background.remove(); // fjern baggrund, så den ikke blokkerer
-    }
-    // på mobil (window.innerWidth < 800) gør vi ingenting, så baggrund bliver stående
-  }
 
   // --- Tjek om pop-up allerede er set ---
   let hasSeenPopup = sessionStorage.getItem("hasSeenPopup") === "true";
@@ -156,6 +145,7 @@ const { variant } = Astro.props;
     cursor: pointer;
     top: -20px;
     right: -20px;
+    z-index: 201;
   }
 
   .box {
@@ -186,7 +176,7 @@ const { variant } = Astro.props;
     .popup-A .popup {
       width: 800px;
       height: 500px;
-      display: grid;
+      display: none;
       grid-template-columns: 1fr 1fr;
     }
 
